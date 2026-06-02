@@ -426,6 +426,50 @@
             box-shadow: 0 6px 24px rgba(255, 140, 66, 0.3);
         }
 
+        /* Toggle hint */
+        .toggle-hint {
+            position: fixed;
+            top: 32px;
+            right: 86px;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #b8860b;
+            background: rgba(255, 224, 102, 0.25);
+            border: 1px solid rgba(255, 179, 71, 0.2);
+            padding: 6px 14px;
+            border-radius: 100px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            opacity: 1;
+            transition: opacity 0.5s ease;
+            animation: hintPulse 2s ease-in-out infinite;
+        }
+
+        .hint-arrow {
+            font-size: 1rem;
+            animation: arrowBounce 1.5s ease-in-out infinite;
+        }
+
+        @keyframes hintPulse {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 1; }
+        }
+
+        @keyframes arrowBounce {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(4px); }
+        }
+
+        body.sunrise .toggle-hint {
+            color: #8b3a62;
+            background: rgba(196, 77, 255, 0.12);
+            border-color: rgba(196, 77, 255, 0.2);
+        }
+
         /* === SUNRISE MODE === */
         body.sunrise {
             background: #fef5f0;
@@ -517,8 +561,12 @@
         }
     </style>
 </head>
-<body>
-    <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">🌅</button>
+<body class="sunrise">
+    <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">☀️</button>
+    <div class="toggle-hint" id="toggleHint">
+        <span>apasă pe soare pentru răsărit</span>
+        <span class="hint-arrow">→</span>
+    </div>
     <div class="greeting" id="greeting"></div>
 
     <!-- Bucharest bloc silhouette -->
@@ -937,12 +985,14 @@
             const isSunrise = document.body.classList.contains('sunrise');
             btn.textContent = isSunrise ? '☀️' : '🌅';
             localStorage.setItem('theme', isSunrise ? 'sunrise' : 'morning');
+            // Hide hint after first click
+            document.getElementById('toggleHint').style.opacity = '0';
         }
 
         // Load saved theme
-        if (localStorage.getItem('theme') === 'sunrise') {
-            document.body.classList.add('sunrise');
-            document.getElementById('themeToggle').textContent = '☀️';
+        if (localStorage.getItem('theme') === 'morning') {
+            document.body.classList.remove('sunrise');
+            document.getElementById('themeToggle').textContent = '🌅';
         }
 
         // Keyboard support
