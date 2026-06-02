@@ -981,10 +981,7 @@
         // Theme toggle
         function toggleTheme() {
             document.body.classList.toggle('sunrise');
-            const btn = document.getElementById('themeToggle');
-            const isSunrise = document.body.classList.contains('sunrise');
-            btn.textContent = isSunrise ? '☀️' : '🌅';
-            localStorage.setItem('theme', isSunrise ? 'sunrise' : 'morning');
+            localStorage.setItem('theme', document.body.classList.contains('sunrise') ? 'sunrise' : 'morning');
             // Hide hint after first click
             document.getElementById('toggleHint').style.opacity = '0';
         }
@@ -992,7 +989,6 @@
         // Load saved theme
         if (localStorage.getItem('theme') === 'morning') {
             document.body.classList.remove('sunrise');
-            document.getElementById('themeToggle').textContent = '🌅';
         }
 
         // Keyboard support
