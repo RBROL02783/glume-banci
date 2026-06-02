@@ -121,6 +121,25 @@
             80% { transform: translateY(-12px) rotate(-2deg); }
         }
 
+        /* Sparkles */
+        .sparkle {
+            position: fixed;
+            pointer-events: none;
+            z-index: 0;
+            animation: sparkleFloat 10s ease-in-out infinite, sparklePulse 3s ease-in-out infinite;
+        }
+
+        @keyframes sparkleFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            33% { transform: translateY(-10px) rotate(5deg); }
+            66% { transform: translateY(-5px) rotate(-3deg); }
+        }
+
+        @keyframes sparklePulse {
+            0%, 100% { opacity: var(--sparkle-opacity); }
+            50% { opacity: calc(var(--sparkle-opacity) * 0.6); }
+        }
+
         /* Warm floating dots */
         .dot {
             position: fixed;
@@ -668,6 +687,40 @@
     <div class="coffee coffee-7">☕</div>
     <div class="coffee coffee-8">☕</div>
     <div class="coffee coffee-9">☕</div>
+
+    <!-- Sparkles — foreground (large, high opacity) -->
+    <div class="sparkle" style="top:15%;left:4%;font-size:1.6rem;--sparkle-opacity:0.8;animation-delay:-1s">✨</div>
+    <div class="sparkle" style="top:70%;right:5%;font-size:1.5rem;--sparkle-opacity:0.78;animation-delay:-3s">✨</div>
+    <div class="sparkle" style="bottom:18%;left:8%;font-size:1.7rem;--sparkle-opacity:0.75;animation-delay:-5s">✨</div>
+    <div class="sparkle" style="top:30%;right:4%;font-size:1.4rem;--sparkle-opacity:0.8;animation-delay:-7s">✨</div>
+    <div class="sparkle" style="top:55%;left:2%;font-size:1.5rem;--sparkle-opacity:0.76;animation-delay:-2s">✨</div>
+    <div class="sparkle" style="bottom:8%;right:8%;font-size:1.6rem;--sparkle-opacity:0.72;animation-delay:-9s">✨</div>
+    <div class="sparkle" style="top:80%;left:6%;font-size:1.3rem;--sparkle-opacity:0.74;animation-delay:-4s">✨</div>
+    <div class="sparkle" style="top:5%;right:7%;font-size:1.5rem;--sparkle-opacity:0.77;animation-delay:-6s">✨</div>
+    <div class="sparkle" style="bottom:35%;right:3%;font-size:1.4rem;--sparkle-opacity:0.73;animation-delay:-8s">✨</div>
+    <div class="sparkle" style="top:42%;left:5%;font-size:1.6rem;--sparkle-opacity:0.79;animation-delay:-0.5s">✨</div>
+    <!-- Sparkles — midground -->
+    <div class="sparkle" style="top:20%;left:22%;font-size:1.1rem;--sparkle-opacity:0.55;animation-delay:-2.5s">✨</div>
+    <div class="sparkle" style="top:50%;right:18%;font-size:1rem;--sparkle-opacity:0.5;animation-delay:-4.5s">✨</div>
+    <div class="sparkle" style="bottom:25%;left:25%;font-size:1.2rem;--sparkle-opacity:0.52;animation-delay:-6.5s">✨</div>
+    <div class="sparkle" style="top:65%;right:22%;font-size:1rem;--sparkle-opacity:0.48;animation-delay:-1.5s">✨</div>
+    <div class="sparkle" style="top:10%;left:30%;font-size:1.1rem;--sparkle-opacity:0.53;animation-delay:-3.5s">✨</div>
+    <div class="sparkle" style="bottom:40%;right:25%;font-size:1rem;--sparkle-opacity:0.5;animation-delay:-5.5s">✨</div>
+    <div class="sparkle" style="top:75%;left:18%;font-size:1.2rem;--sparkle-opacity:0.47;animation-delay:-7.5s">✨</div>
+    <div class="sparkle" style="top:35%;right:28%;font-size:1rem;--sparkle-opacity:0.52;animation-delay:-8.5s">✨</div>
+    <div class="sparkle" style="bottom:55%;left:20%;font-size:1.1rem;--sparkle-opacity:0.49;animation-delay:-9.5s">✨</div>
+    <div class="sparkle" style="top:85%;right:20%;font-size:1rem;--sparkle-opacity:0.51;animation-delay:-0.8s">✨</div>
+    <!-- Sparkles — background (small, lower opacity) -->
+    <div class="sparkle" style="top:25%;left:42%;font-size:0.7rem;--sparkle-opacity:0.3;animation-delay:-2s">✨</div>
+    <div class="sparkle" style="top:45%;right:40%;font-size:0.65rem;--sparkle-opacity:0.28;animation-delay:-4s">✨</div>
+    <div class="sparkle" style="bottom:30%;left:48%;font-size:0.7rem;--sparkle-opacity:0.25;animation-delay:-6s">✨</div>
+    <div class="sparkle" style="top:60%;left:55%;font-size:0.6rem;--sparkle-opacity:0.27;animation-delay:-1s">✨</div>
+    <div class="sparkle" style="top:15%;right:38%;font-size:0.7rem;--sparkle-opacity:0.3;animation-delay:-3s">✨</div>
+    <div class="sparkle" style="bottom:45%;right:45%;font-size:0.65rem;--sparkle-opacity:0.26;animation-delay:-5s">✨</div>
+    <div class="sparkle" style="top:72%;left:44%;font-size:0.6rem;--sparkle-opacity:0.24;animation-delay:-7s">✨</div>
+    <div class="sparkle" style="top:38%;left:52%;font-size:0.7rem;--sparkle-opacity:0.29;animation-delay:-8s">✨</div>
+    <div class="sparkle" style="bottom:60%;right:42%;font-size:0.65rem;--sparkle-opacity:0.27;animation-delay:-9s">✨</div>
+    <div class="sparkle" style="top:88%;left:46%;font-size:0.6rem;--sparkle-opacity:0.25;animation-delay:-0.3s">✨</div>
 
     <div class="card">
         <div class="icon">☀️</div>
