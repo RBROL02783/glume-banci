@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>💰 Glume Financiare</title>
+    <title>☀️ Glume Financiare — Bună Dimineața!</title>
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
         * {
@@ -18,98 +18,119 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: #0f0f1a;
-            overflow: hidden;
+            background: #fffdf7;
+            overflow-x: hidden;
             position: relative;
-            transition: background 0.5s ease;
         }
 
-        body.light {
-            background: #f0f0f8;
-        }
-
-        /* Animated gradient background */
-        body::before {
-            content: '';
+        /* Sun illustration */
+        .sun {
             position: fixed;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: conic-gradient(
-                from 0deg at 50% 50%,
-                #ff6b9d20,
-                #c44dff20,
-                #4d9fff20,
-                #4dffcb20,
-                #ffdd4d20,
-                #ff6b9d20
-            );
-            animation: rotate 20s linear infinite;
+            bottom: -80px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #ffe066 0%, #ffb347 40%, #ff8c4220 70%, transparent 100%);
+            animation: sunRise 3s ease-out forwards, sunPulse 4s ease-in-out infinite 3s;
             z-index: 0;
         }
 
-        body.light::before {
-            background: conic-gradient(
-                from 0deg at 50% 50%,
-                #ff6b9d30,
-                #c44dff30,
-                #4d9fff30,
-                #4dffcb30,
-                #ffdd4d30,
-                #ff6b9d30
-            );
+        @keyframes sunRise {
+            from { bottom: -200px; opacity: 0.3; }
+            to { bottom: -80px; opacity: 1; }
         }
 
-        @keyframes rotate {
-            to { transform: rotate(360deg); }
+        @keyframes sunPulse {
+            0%, 100% { transform: translateX(-50%) scale(1); }
+            50% { transform: translateX(-50%) scale(1.04); }
         }
 
-        /* Floating orbs */
-        .orb {
+        /* Sun rays */
+        .sun-rays {
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 300px;
+            background: radial-gradient(ellipse at bottom, #ffe06630 0%, #ffb34715 40%, transparent 70%);
+            z-index: 0;
+            animation: raysGlow 5s ease-in-out infinite;
+        }
+
+        @keyframes raysGlow {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
+
+        /* Floating coffee cups */
+        .coffee {
+            position: fixed;
+            font-size: 2.2rem;
+            opacity: 0.15;
+            animation: coffeeFloat 12s ease-in-out infinite;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .coffee-1 { top: 12%; left: 8%; animation-delay: 0s; }
+        .coffee-2 { top: 25%; right: 10%; animation-delay: -3s; font-size: 1.8rem; }
+        .coffee-3 { bottom: 30%; left: 5%; animation-delay: -6s; font-size: 1.5rem; }
+        .coffee-4 { top: 60%; right: 6%; animation-delay: -2s; font-size: 2rem; }
+        .coffee-5 { top: 8%; left: 45%; animation-delay: -4s; font-size: 1.4rem; }
+        .coffee-6 { bottom: 15%; right: 30%; animation-delay: -7s; font-size: 1.6rem; }
+
+        @keyframes coffeeFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            25% { transform: translateY(-12px) rotate(3deg); }
+            50% { transform: translateY(-6px) rotate(-2deg); }
+            75% { transform: translateY(-15px) rotate(2deg); }
+        }
+
+        /* Warm floating dots */
+        .dot {
             position: fixed;
             border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.4;
-            animation: float 8s ease-in-out infinite;
+            opacity: 0.12;
             z-index: 0;
+            pointer-events: none;
+            animation: dotFloat 10s ease-in-out infinite;
         }
 
-        .orb-1 {
-            width: 300px;
-            height: 300px;
-            background: #ff6b9d;
-            top: 10%;
-            left: 10%;
-            animation-delay: 0s;
-        }
+        .dot-1 { width: 180px; height: 180px; background: #ffe066; top: 5%; right: 15%; animation-delay: 0s; }
+        .dot-2 { width: 120px; height: 120px; background: #ffb347; bottom: 20%; left: 10%; animation-delay: -4s; }
+        .dot-3 { width: 90px; height: 90px; background: #ffd6a0; top: 40%; left: 20%; animation-delay: -2s; }
 
-        .orb-2 {
-            width: 250px;
-            height: 250px;
-            background: #4d9fff;
-            bottom: 10%;
-            right: 10%;
-            animation-delay: -3s;
-        }
-
-        .orb-3 {
-            width: 200px;
-            height: 200px;
-            background: #c44dff;
-            top: 50%;
-            right: 30%;
-            animation-delay: -5s;
-        }
-
-        body.light .orb {
-            opacity: 0.25;
-            filter: blur(100px);
-        }
-
-        @keyframes float {
+        @keyframes dotFloat {
             0%, 100% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-30px) scale(1.05); }
+            50% { transform: translateY(-20px) scale(1.08); }
+        }
+
+        /* Good morning banner */
+        .greeting {
+            position: fixed;
+            top: 28px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #b8860b;
+            background: rgba(255, 224, 102, 0.25);
+            border: 1px solid rgba(255, 179, 71, 0.2);
+            padding: 8px 20px;
+            border-radius: 100px;
+            z-index: 10;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            animation: greetFade 1s ease forwards;
+            opacity: 0;
+        }
+
+        @keyframes greetFade {
+            from { opacity: 0; transform: translateX(-50%) translateY(-10px); }
+            to { opacity: 1; transform: translateX(-50%) translateY(0); }
         }
 
         /* Main card */
@@ -118,29 +139,22 @@
             z-index: 1;
             width: 90%;
             max-width: 520px;
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(40px);
-            -webkit-backdrop-filter: blur(40px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 179, 71, 0.15);
             border-radius: 32px;
             padding: 48px 40px;
             text-align: center;
             box-shadow: 
-                0 8px 32px rgba(0, 0, 0, 0.3),
-                inset 0 1px 0 rgba(255, 255, 255, 0.05);
-            transition: transform 0.3s ease, background 0.5s ease, border 0.5s ease, box-shadow 0.5s ease;
-        }
-
-        body.light .card {
-            background: rgba(255, 255, 255, 0.7);
-            border: 1px solid rgba(0, 0, 0, 0.06);
-            box-shadow: 
-                0 8px 40px rgba(0, 0, 0, 0.08),
-                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+                0 12px 48px rgba(255, 179, 71, 0.1),
+                0 2px 8px rgba(0, 0, 0, 0.04),
+                inset 0 1px 0 rgba(255, 255, 255, 0.9);
+            transition: transform 0.3s ease;
         }
 
         .card:hover {
-            transform: translateY(-2px);
+            transform: translateY(-3px);
         }
 
         /* Emoji icon */
@@ -148,61 +162,58 @@
             font-size: 56px;
             margin-bottom: 16px;
             display: inline-block;
-            animation: bounce 2s ease-in-out infinite;
+            animation: bounce 2.5s ease-in-out infinite;
         }
 
         @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-8px) rotate(3deg); }
         }
 
-        /* Title */
+        /* Title — Apple liquify */
         h1 {
-            font-size: 1.8rem;
+            font-size: 1.9rem;
             font-weight: 800;
             background: linear-gradient(
                 270deg,
+                #ff8c42,
+                #ffb347,
+                #ffe066,
                 #ff6b9d,
-                #c44dff,
-                #4d9fff,
-                #4dffcb,
-                #ffdd4d,
-                #ff6b9d,
-                #c44dff,
-                #4d9fff
+                #ffb347,
+                #ff8c42,
+                #ffe066,
+                #ff6b9d
             );
-            background-size: 300% 300%;
+            background-size: 400% 400%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             margin-bottom: 8px;
             letter-spacing: -0.5px;
-            animation: liquidGradient 6s ease infinite;
+            animation: liquidGradient 8s ease infinite;
         }
 
         @keyframes liquidGradient {
             0% { background-position: 0% 50%; }
-            25% { background-position: 50% 75%; }
-            50% { background-position: 100% 50%; }
-            75% { background-position: 50% 25%; }
+            20% { background-position: 40% 80%; }
+            40% { background-position: 100% 50%; }
+            60% { background-position: 60% 20%; }
+            80% { background-position: 30% 70%; }
             100% { background-position: 0% 50%; }
         }
 
         .subtitle {
-            color: rgba(255, 255, 255, 0.4);
+            color: #b8860b;
             font-size: 0.9rem;
             margin-bottom: 32px;
-            transition: color 0.5s ease;
-        }
-
-        body.light .subtitle {
-            color: rgba(0, 0, 0, 0.4);
+            opacity: 0.6;
         }
 
         /* Joke display */
         .joke-container {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.06);
+            background: rgba(255, 224, 102, 0.08);
+            border: 1px solid rgba(255, 179, 71, 0.12);
             border-radius: 20px;
             padding: 32px 24px;
             margin-bottom: 32px;
@@ -213,23 +224,14 @@
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        body.light .joke-container {
-            background: rgba(0, 0, 0, 0.03);
-            border: 1px solid rgba(0, 0, 0, 0.06);
-        }
-
         .joke-text {
-            color: rgba(255, 255, 255, 0.9);
+            color: #3d2c0a;
             font-size: 1.15rem;
-            line-height: 1.6;
+            line-height: 1.7;
             font-weight: 400;
             opacity: 1;
             transform: translateY(0);
             transition: all 0.3s ease;
-        }
-
-        body.light .joke-text {
-            color: rgba(0, 0, 0, 0.8);
         }
 
         .joke-text.fade-out {
@@ -257,12 +259,12 @@
             font-weight: 600;
             font-family: inherit;
             color: white;
-            background: linear-gradient(135deg, #ff6b9d, #c44dff);
+            background: linear-gradient(135deg, #ffb347, #ff8c42);
             border: none;
             border-radius: 16px;
             cursor: pointer;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 4px 24px rgba(196, 77, 255, 0.3);
+            box-shadow: 0 4px 24px rgba(255, 140, 66, 0.3);
             overflow: hidden;
         }
 
@@ -273,14 +275,14 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, #c44dff, #4d9fff);
+            background: linear-gradient(135deg, #ff8c42, #ff6b9d);
             opacity: 0;
             transition: opacity 0.3s ease;
         }
 
         .btn:hover {
             transform: translateY(-2px) scale(1.02);
-            box-shadow: 0 8px 32px rgba(196, 77, 255, 0.5);
+            box-shadow: 0 8px 32px rgba(255, 140, 66, 0.45);
         }
 
         .btn:hover::before {
@@ -305,48 +307,10 @@
         /* Counter */
         .counter {
             margin-top: 24px;
-            color: rgba(255, 255, 255, 0.25);
+            color: rgba(184, 134, 11, 0.4);
             font-size: 0.8rem;
             letter-spacing: 1px;
             text-transform: uppercase;
-            transition: color 0.5s ease;
-        }
-
-        body.light .counter {
-            color: rgba(0, 0, 0, 0.3);
-        }
-
-        /* Theme toggle */
-        .theme-toggle {
-            position: fixed;
-            top: 24px;
-            right: 24px;
-            z-index: 10;
-            width: 52px;
-            height: 52px;
-            border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.4rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
-        }
-
-        .theme-toggle:hover {
-            transform: scale(1.1) rotate(15deg);
-            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
-        }
-
-        body.light .theme-toggle {
-            background: rgba(255, 255, 255, 0.8);
-            border: 1px solid rgba(0, 0, 0, 0.08);
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
         }
 
         /* Confetti particles */
@@ -367,7 +331,7 @@
             }
             100% { 
                 opacity: 0; 
-                transform: translateY(100px) rotate(720deg) scale(0); 
+                transform: translateY(80px) rotate(720deg) scale(0); 
             }
         }
 
@@ -380,23 +344,35 @@
             h1 { font-size: 1.5rem; }
             .joke-text { font-size: 1rem; }
             .btn { padding: 14px 28px; }
+            .sun { width: 220px; height: 220px; }
+            .greeting { font-size: 0.75rem; }
         }
     </style>
 </head>
 <body>
-    <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">🌙</button>
+    <div class="greeting" id="greeting"></div>
 
-    <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
-    <div class="orb orb-3"></div>
+    <div class="sun"></div>
+    <div class="sun-rays"></div>
+
+    <div class="dot dot-1"></div>
+    <div class="dot dot-2"></div>
+    <div class="dot dot-3"></div>
+
+    <div class="coffee coffee-1">☕</div>
+    <div class="coffee coffee-2">☕</div>
+    <div class="coffee coffee-3">☕</div>
+    <div class="coffee coffee-4">☕</div>
+    <div class="coffee coffee-5">☕</div>
+    <div class="coffee coffee-6">☕</div>
 
     <div class="card">
-        <div class="icon">🏦</div>
+        <div class="icon">☀️</div>
         <h1>Glume Financiare</h1>
-        <p class="subtitle">Râzi până pierzi dobânda</p>
+        <p class="subtitle">Începe ziua cu un zâmbet și o cafea ☕</p>
 
         <div class="joke-container">
-            <p class="joke-text" id="jokeText">Apasă butonul pentru prima glumă! 🎉</p>
+            <p class="joke-text" id="jokeText">Apasă butonul pentru prima glumă! 🌞</p>
         </div>
 
         <button class="btn" id="jokeBtn" onclick="newJoke()">
@@ -425,20 +401,30 @@
             "Ce e un optimist?\nUn om care crede că poate trăi din dobânzi. 🌈",
         ];
 
+        const greetings = [
+            "☀️ Bună dimineața! Zi frumoasă, glume bune.",
+            "🌤️ O zi minunată începe cu un zâmbet!",
+            "☕ Cafeaua e gata, glumele te așteaptă!",
+            "🌻 Hai să râdem puțin azi!",
+            "✨ Fiecare zi e mai bună cu o glumă.",
+        ];
+
+        // Set greeting
+        document.getElementById('greeting').textContent = 
+            greetings[Math.floor(Math.random() * greetings.length)];
+
         let count = 0;
         let lastIndex = -1;
 
         function newJoke() {
             const jokeText = document.getElementById('jokeText');
             
-            // Get random joke (avoid repeating the last one)
             let index;
             do {
                 index = Math.floor(Math.random() * glume.length);
             } while (index === lastIndex && glume.length > 1);
             lastIndex = index;
 
-            // Animate out
             jokeText.classList.add('fade-out');
             jokeText.classList.remove('fade-in');
 
@@ -451,12 +437,11 @@
                     count === 1 ? '1 glumă generată' : `${count} glume generate`;
             }, 200);
 
-            // Spawn particles
             spawnParticles();
         }
 
         function spawnParticles() {
-            const colors = ['#ff6b9d', '#c44dff', '#4d9fff', '#4dffcb', '#ffdd4d'];
+            const colors = ['#ffe066', '#ffb347', '#ff8c42', '#ff6b9d', '#ffd6a0'];
             const btn = document.getElementById('jokeBtn');
             const rect = btn.getBoundingClientRect();
 
@@ -470,21 +455,6 @@
 
                 setTimeout(() => particle.remove(), 1500);
             }
-        }
-
-        // Theme toggle
-        function toggleTheme() {
-            document.body.classList.toggle('light');
-            const btn = document.getElementById('themeToggle');
-            const isLight = document.body.classList.contains('light');
-            btn.textContent = isLight ? '🌙' : '☀️';
-            localStorage.setItem('theme', isLight ? 'light' : 'dark');
-        }
-
-        // Load saved theme
-        if (localStorage.getItem('theme') === 'light') {
-            document.body.classList.add('light');
-            document.getElementById('themeToggle').textContent = '🌙';
         }
 
         // Keyboard support
